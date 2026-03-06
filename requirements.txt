@@ -1,0 +1,8 @@
+PyPDF2
+pdfminer.six
+python-docx
+python-pptx
+Pillow
+openai
+rdflib
+pyshacl

@@ -1,0 +1,44 @@
+{
+    "name": "ontology-extraction-methodology",
+    "description": "本体建模方法论配置示例",
+    "version": "1.0.0",
+    "llm": {
+        "provider": "openai",
+        "model": "gpt-4",
+        "temperature": 0.2,
+        "max_tokens": 4096
+    },
+    "extraction": {
+        "entity_types": [
+            "Class",
+            "Individual",
+            "ObjectProperty",
+            "DataProperty",
+            "AnnotationProperty"
+        ],
+        "relation_types": [
+            "subClassOf",
+            "equivalentClass",
+            "disjointWith",
+            "domain",
+            "range",
+            "inverseOf"
+        ],
+        "ner_prompt_template": "从以下文本中识别所有与本体建模相关的实体（类、属性、个体）：\n\n{text}\n\n请以JSON格式返回结果。",
+        "re_prompt_template": "根据以下文本和已识别的实体，抽取实体之间的关系：\n\n文本：{text}\n实体：{entities}\n\n请以JSON格式返回关系三元组。",
+        "ae_prompt_template": "根据以下文本，为已识别的实体抽取属性信息：\n\n文本：{text}\n实体：{entities}\n\n请以JSON格式返回属性列表。"
+    },
+    "ontology": {
+        "base_uri": "http://example.org/ontology#",
+        "default_language": "zh",
+        "output_format": "owl",
+        "validation": {
+            "enable_shacl": true,
+            "shacl_shapes_path": null
+        }
+    },
+    "rules": {
+        "formalization_format": "sparql",
+        "enable_swrl": false
+    }
+}
